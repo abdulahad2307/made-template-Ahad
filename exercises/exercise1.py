@@ -29,20 +29,13 @@ metadata = sqlc.MetaData()
 sqlite_connection = engine.connect()
 
 airports_table = sqlc.Table("airports",metadata)
-#'''
+
 for col, dt in column_data_types.items():
     airports_table.append_column(sqlc.Column(col,dt))
-#'''
-#metadata.create_all(engine)
+
 
 dataframe.to_sql('airports','sqlite:///airports.sqlite', if_exists='replace', index=False)
 
-''''
-with engine.connect() as connection:
-    dataframe.to_sql("temp_data_table", connection, index=False, if_exists = "replace")
-    connection.execute(f"INSERT INTO airports SELECT * From temp_data_table;")
-    connection.execute("DROP TABLE temp_table")
-'''
 print(f"Data has been successfully loaded into the SQLlite Database: {db_table_name}")
 
 
