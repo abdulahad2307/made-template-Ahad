@@ -1,3 +1,4 @@
+## Data Extraction from designated URL 
 import pandas as pd
 import sqlalchemy as sqlc
 
@@ -10,7 +11,7 @@ column_data_types = {
     "column2": sqlc.String(),
     "column3": sqlc.String(),
     "column4": sqlc.String(),
-    "column5": sqlc.Integer(),
+    "column5": sqlc.String(),
     "column6": sqlc.String(),
     "column7": sqlc.Float(),
     "column8": sqlc.Float(),
@@ -22,20 +23,26 @@ column_data_types = {
 
 } ## Assigning fitting built-in SQLite types to all columns
 
-db_table_name = "airports.sqlite" 
-engine = sqlc.create_engine(f"sqlite:///{db_table_name}", echo = True)
+db_name = "airports.sqlite" ## database_name
+db_path = f"sqlite:///{db_name}" ## dtabase_path
+engine = sqlc.create_engine(f"{db_path}") ## SQLAlchemy Eninge
 metadata = sqlc.MetaData()
 
-sqlite_connection = engine.connect()
+sqlite_connection = engine.connect() ## SQLite Connection
 
 airports_table = sqlc.Table("airports",metadata)
 
-for col, dt in column_data_types.items():
+for col, dt in column_data_types.items(): ## Assiging defined Column DataTypes
     airports_table.append_column(sqlc.Column(col,dt))
 
+metadata.create_all(engine)
 
-dataframe.to_sql('airports','sqlite:///airports.sqlite', if_exists='replace', index=False)
+with engine.connect() as connection: ## Data loading from Dataframe to SQLite databse using SQLAlchemy engine
+    dataframe.to_sql('temp_table',connection, if_exists='replace', index=False)
+    connection.execute(f"INSERT INTO airports SELECT * FROM temp_table;")
+    connection.execute ("DROP TABLE temp_table")
+#dataframe.to_sql('airports',f"{db_table_path}", if_exists='replace', index=False)
 
-print(f"Data has been successfully loaded into the SQLlite Database: {db_table_name}")
+print(f"Data has been successfully loaded into the SQLlite Database: {db_name}")
 
 
