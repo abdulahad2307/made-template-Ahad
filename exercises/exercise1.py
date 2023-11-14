@@ -34,14 +34,15 @@ airports_table = sqlc.Table("airports",metadata)
 
 for col, dt in column_data_types.items(): ## Assiging defined Column DataTypes
     airports_table.append_column(sqlc.Column(col,dt))
-
+'''
 metadata.create_all(engine)
 
 with engine.connect() as connection: ## Data loading from Dataframe to SQLite databse using SQLAlchemy engine
     dataframe.to_sql('temp_table',connection, if_exists='replace', index=False)
     connection.execute(f"INSERT INTO airports SELECT * FROM temp_table;")
     connection.execute ("DROP TABLE temp_table")
-#dataframe.to_sql('airports',f"{db_table_path}", if_exists='replace', index=False)
+'''
+dataframe.to_sql('airports',f"{db_path}", if_exists='replace', index=False)
 
 print(f"Data has been successfully loaded into the SQLlite Database: {db_name}")
 
