@@ -25,6 +25,13 @@ This data source will provide daily weather and climate data of Paphos Airport t
 ## Work Packages:
 1. Searching for suitable dataset [#1][i1]
 2. Writing initial project plan [#2][i2]
+3. Extracting Data From the Datasource [#3][i3]
+4. Transformation of the data and error fixing. [#4][i4]
+5. Loading the data into a data directory. [#5][i5]
 
 [i1]: https://github.com/abdulahad2307/made-template-Ahad/issues/1
 [i2]: https://github.com/abdulahad2307/made-template-Ahad/issues/2
+[i3]: https://github.com/abdulahad2307/made-template-Ahad/issues/4
+[i4]: https://github.com/abdulahad2307/made-template-Ahad/issues/5
+[i5]: https://github.com/abdulahad2307/made-template-Ahad/issues/6
+
