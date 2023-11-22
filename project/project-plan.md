@@ -11,7 +11,7 @@ The analysis helps to do correlate frequency of air traffic in Paphos Internatio
 ### Datasource 1: European Data Portal - Daily Air Traffic at Paphos Airport
 #### Metadata URL: https://data.europa.eu/en
 #### Sample Data URL: https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fwww.data.gov.cy%2Fsites%2Fdefault%2Ffiles%2FPAFOS%2520AIRPORT%2520DAILY%2520AIR%2520TRAFFIC%25202019.xlsx&wdOrigin=BROWSELINK
-#### Data Type: CSV
+#### Data Type: XLSX
 #### Data Descriptions:
 In this data source contains daily air traffic data of Paphos International Airport divided by monthly basis. Data includes tanding and take-off count of both the international and national flights. This dataset also takes into account the transit flights and helicopters landing and take-off information. 
 
