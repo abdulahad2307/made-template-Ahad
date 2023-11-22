@@ -30,10 +30,10 @@ def main():
     ## Load Data
     
     air_traffic_data_load = LD(air_traffic_transformed_data, "airports_daily_traffic_2019",db_path)
-    print(type(air_traffic_data_load))
+    #print(type(air_traffic_data_load))
     
     weather_data_load = LD(weather_transformed_data,"daily_weather_data",db_path)
-    print(type(air_traffic_data_load))
+    #print(type(air_traffic_data_load))
     
     #air_traffic_data_table = air_traffic_data_load.create_table()
     
