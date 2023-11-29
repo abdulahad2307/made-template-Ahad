@@ -43,7 +43,6 @@ pipeline DBDataPipeline {
         ];
     }
 
-
     block DBDataLoader oftype SQLiteLoader {
         table: "trainstops";
         file: "./trainstops.sqlite";
