@@ -1,0 +1,56 @@
+pipeline DBDataPipeline {
+    block DBDataExtractor oftype HttpExtractor {url: "https://download-data.deutschebahn.com/static/datasets/haltestellen/D_Bahnhof_2020_alle.CSV";}
+    block DBDataTextFileInterpreter oftype TextFileInterpreter{}
+    block DBDataCSVInterpreter oftype CSVInterpreter{delimiter: ";";}
+    block DBDataColumnDropper oftype ColumnDeleter {delete: [column J];}
+
+    constraint VerkehrList on text: value in ["FV", "RV", "nur DPN",];
+
+    valuetype verkehr oftype text {constraints: [VerkehrList,];}
+    
+    constraint LBRange oftype RangeConstraint {lowerBound: -90;upperBound: 90;}
+    
+    valuetype laeng oftype decimal {constraints: [LBRange,];}
+    valuetype breite oftype decimal {constraints: [LBRange,];}
+
+    constraint IFOPTFormat oftype RegexConstraint {
+        regex: /\w{2}:\d*:\d*(?::\d*)?/;
+    }
+
+    valuetype ifopt oftype text {constraints: [IFOPTFormat,];}
+
+    constraint ValidTextLength oftype LengthConstraint {
+        minLength: 1;
+        maxLength: 9007199254740991;
+    }
+
+    valuetype ValidText oftype text {constraints: [ValidTextLength,];}
+
+    block DBDataTableInterpreter oftype TableInterpreter {
+        header: true;
+        columns: [
+            "EVA_NR" oftype integer,
+            "DS100" oftype ValidText,
+            "IFOPT" oftype ifopt,
+            "NAME" oftype ValidText,
+            "Verkehr" oftype verkehr,
+            "Laenge" oftype laeng,
+            "Breite" oftype breite,
+            "Betreiber_Name" oftype ValidText,
+            "Betreiber_Nr" oftype integer,
+            "Status" oftype ValidText
+        ];
+    }
+
+    block DBDataLoader oftype SQLiteLoader {
+        table: "trainstops";
+        file: "./trainstops.sqlite";
+    }
+
+    DBDataExtractor
+        -> DBDataTextFileInterpreter
+        -> DBDataCSVInterpreter
+        -> DBDataColumnDropper
+        -> DBDataTableInterpreter
+        -> DBDataLoader;
+} 
