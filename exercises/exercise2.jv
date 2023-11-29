@@ -5,7 +5,6 @@ pipeline DBDataPipeline {
     block DBDataColumnDropper oftype ColumnDeleter {delete: [column J];}
 
     constraint VerkehrList on text: value in ["FV", "RV", "nur DPN",];
-
     valuetype verkehr oftype text {constraints: [VerkehrList,];}
     
     constraint LBRange oftype RangeConstraint {lowerBound: -90;upperBound: 90;}
