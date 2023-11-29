@@ -20,21 +20,21 @@ pipeline DBDataPipeline {
         minLength: 1;
         maxLength: 9007199254740991;
     }
-    valuetype ValidText oftype text {constraints: [ValidTextLength,];}
+    valuetype validtext oftype text {constraints: [ValidTextLength,];}
 
     block DBDataTableInterpreter oftype TableInterpreter {
         header: true;
         columns: [
             "EVA_NR" oftype integer,
-            "DS100" oftype ValidText,
+            "DS100" oftype validtext,
             "IFOPT" oftype ifopt,
-            "NAME" oftype ValidText,
+            "NAME" oftype validtext,
             "Verkehr" oftype verkehr,
             "Laenge" oftype laeng,
             "Breite" oftype breite,
-            "Betreiber_Name" oftype ValidText,
+            "Betreiber_Name" oftype validtext,
             "Betreiber_Nr" oftype integer,
-            "Status" oftype ValidText
+            "Status" oftype validtext
         ];
     }
 
