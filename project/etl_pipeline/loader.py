@@ -1,6 +1,6 @@
 ## imports
 import os
-import sqlalchemy as sqlc
+import sqlite3
 
 class LoadData:
     
@@ -9,27 +9,14 @@ class LoadData:
         self.table_name = table_name
         self.db_path = db_path
         
+    def load_data_at(self):
+        connection = sqlite3.connect(self.db_path)
         
-    '''
-    def create_table(self):
-        engine = sqlc.create_engine(f"sqlite:::///{self.db_path}")
-        metadata = sqlc.MetaData()
-        table = sqlc.Table(self.table_name,metadata)
-        metadata.create_all(engine)
+        for sheet_name, dataframe in self.data.items():
+            table_name = self.table_name + sheet_name
+            dataframe.to_sql(table_name,connection,if_exists='replace', index=False)
+    
+    def load_data_wt(self):
+        connection = sqlite3.connect(self.db_path)
         
-        return table
-    '''
-    def load_data(self, data):
-        #print(data.head())
-        #print(self.db_path)
-        data.to_sql(self.table_name,f'sqlite:///{os.path.abspath(self.db_path)}/projectdata.sqlite',if_exists='replace', index=False)
-        '''
-        with sqlc.create_engine(f"sqlite:///{self.db_path}").connect() as connection:
-            try:
-                self.data.to_sql("temp_table",connection, index = False,if_exists = "replace")
-                connection.execute(f'INSERT INTO {self.table_name} SELECT * FROM temp_table;')
-            except Exception as e:
-                print(f"An error occured during data loading: {str(e)}")
-            finally:
-                connection.execute('DROP TABLE temp_table')
-        '''
+        self.data.to_sql(self.table_name,connection,if_exists='replace', index=False)
