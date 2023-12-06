@@ -16,6 +16,7 @@ weather_data_headers = ['Date', 'tavg', 'tmin', 'tmax', 'percp','snow','wdir','w
 #===================================================================#
 def main():
     
+    #'''
     ## ETL of air traffic Data
     
     for year in years:
@@ -23,15 +24,22 @@ def main():
                 
         ##Extract
         air_traffic_data,sheet_name = ED(air_traffic_url,).fetch_data()
-        print(air_traffic_data)
+        #print(air_traffic_data)
+        
         ##Transform
+        
+        # Replace values in the sheet_name list
+        replacements = {'JUNE': 'JUN', 'JULY': 'JUL'}
+        sheet_name = [replacements.get(month, month) for month in sheet_name]
+        print(sheet_name)
         air_traffic_transformed_data = TD(air_traffic_data,year).apply_transformations_atd(sheet_name)
-        print(type(air_traffic_transformed_data))
+        #print(type(air_traffic_transformed_data))
+        
         ## Load Data
         table_name = f"airports_daily_traffic_{year}"
         air_traffic_data_load = LD(air_traffic_transformed_data, table_name,db_path)
         air_traffic_data_load.load_data_wt()
-
+    #'''
     
     ## ETL Weather Data
     
@@ -42,8 +50,8 @@ def main():
         daily_weather_data = ED(weather_url).fetch_data()
         
         ## Transform    
-        weather_transformed_data = TD(daily_weather_data,year).apply_transformations_wd(header = weather_data_headers)
-        #print(weather_transformed_data)
+        weather_transformed_data = TD(daily_weather_data,years).apply_transformations_wd(header = weather_data_headers)
+        print(weather_transformed_data)
 
         ## Load Data
         weather_data_load = LD(weather_transformed_data,"daily_weather_data",db_path)   

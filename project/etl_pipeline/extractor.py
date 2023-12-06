@@ -14,7 +14,6 @@ class ExtractData:
             #self.data = pd.read_excel(self.url,sheet_name=None, skiprows=1,header=2)
             
             xls = pd.ExcelFile(self.url)
-            
             #Sheet_name_Extraction
             for sheet_name in xls.sheet_names:
                 self.sheet_name.append(sheet_name)
@@ -28,3 +27,4 @@ class ExtractData:
             return self.data
         else:
             raise ValueError(f"Unsupported file formet from the url: {self.url}")
+        
