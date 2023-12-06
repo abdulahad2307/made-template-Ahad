@@ -17,18 +17,20 @@ class TestDataPipeLine(unittest.TestCase):
         self.db_path = os.path.join(os.getcwd(), "data", "project.sqlite")
         self.table_name = "airports_test_table"
         self.weather_data_headers = ['Date', 'tavg', 'tmin', 'tmax', 'percp','snow','wdir','wspd','wpgt','pres','tsun']
+        self.Expected_rows = 377
         
     def test_etl(self):
         data,sheet_name = extractor(self.sample_data_url).fetch_data()
         data = transformer(data,self.years).apply_transformations_atd(sheet_name)
-        load_data = loader(data,self.table_name,self.db_path).load_data_at()
+        load_data = loader(data,self.table_name,self.db_path).load_data_wt()
         
         with sqlite3.connect(self.db_path) as conn:
             query =f"SELECT * FROM {self.table_name}"
             loaded_test_data = pd.read_sql_query(query,conn)
             
+        
         self.assertFalse(loaded_test_data.empty, "Loaded data should not be empty")
-        self.assertEqual(len(load_data.data), len(loaded_test_data), "Number of rows should match")
+        self.assertEqual(self.Expected_rows, len(loaded_test_data), "Number of rows should match")
 
 if __name__ == '__main__':
     unittest.main()
