@@ -28,6 +28,9 @@ This data source will provide daily weather and climate data of Paphos Airport t
 3. Extracting Data From the Datasource [#3][i3]
 4. Transformation of the data and error fixing. [#4][i4]
 5. Loading the data into a data directory. [#5][i5]
+6. Writing Test file for the pipeline.
+7. Implementing CI pipeline for the project.
+8. Final report of the analysis.
 
 [i1]: https://github.com/abdulahad2307/made-template-Ahad/issues/1
 [i2]: https://github.com/abdulahad2307/made-template-Ahad/issues/2
