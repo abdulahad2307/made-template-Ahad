@@ -12,12 +12,12 @@ class TransformData:
         #print(sheet_name)
         for df, sheet_name_val in zip(self.data, sheet_name):
             df['Date'] = str(self.year) + '-' + sheet_name_val + '-' + df['DAY'].astype(str)
-            print(df)
+            #print(df)
             
             df['Date'] = pd.to_datetime(df['Date'], format='%Y-%b-%d',errors='coerce')
             df['Date'] = df['Date'].dt.date
             
-            print(df)
+            #print(df)
             
             # Call the rename_columns function
             df = self.airDataHeaderRename(df)
