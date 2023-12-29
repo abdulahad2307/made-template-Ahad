@@ -38,7 +38,7 @@ def main():
         ## Load Data
         table_name = f"airports_daily_traffic_{year}"
         air_traffic_data_load = LD(air_traffic_transformed_data, table_name,db_path)
-        air_traffic_data_load.load_data_wt()
+        air_traffic_data_load.load_data_at()
     #'''
     
     ## ETL Weather Data
