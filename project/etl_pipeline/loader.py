@@ -12,9 +12,7 @@ class LoadData:
     def load_data_at(self):
         connection = sqlite3.connect(self.db_path)
         data_types = self.data_type()
-        for sheet_name, dataframe in self.data.items():
-            table_name = self.table_name + sheet_name
-            dataframe.to_sql(table_name,connection,if_exists='replace', index=False,dtype = data_types)
+        self.data.to_sql(self.table_name,connection,if_exists='replace', index=False,dtype = data_types)
     
     def load_data_wt(self):
         connection = sqlite3.connect(self.db_path)
@@ -23,7 +21,7 @@ class LoadData:
 
 # =========================== Data Types ================================================#
     def data_type(self):
-        if self.table_name.startswith('airports'):
+        if 'airports' in self.table_name:
             atd_dtype = {
                 'IntlLandings_R11': 'REAL', 
                 'IntlLandings_R29': 'REAL', 
