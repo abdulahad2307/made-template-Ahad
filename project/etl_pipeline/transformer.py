@@ -26,7 +26,6 @@ class TransformData:
             df.insert(0, 'Date', df.pop('Date'))
             #print(df)
             
-            #combined_dataframes = combined_dataframes.append(df, ignore_index=True)
             combined_dataframes = pd.concat([combined_dataframes,df],ignore_index=True)
             
             combined_dataframes = self.cleanATD(combined_dataframes)
@@ -55,14 +54,14 @@ class TransformData:
             'R 29': 'IntlLandings_R29', 
             'TTL': 'IntlLandings_TTL', 
             'R 11.1': 'IntlTakeOffs_R11',
-            'R 29.1': 'IntlTakeOfdss_R29',
-            'TTL.1': 'IntlTakeOfdss_TTL',
-            'R 11.2': 'DomslLandings_R11', 
+            'R 29.1': 'IntlTakeOffs_R29',
+            'TTL.1': 'IntlTakeOffs_TTL',
+            'R 11.2': 'DomsLandings_R11', 
             'R 29.2': 'DomsLandings_R29', 
             'TTL.2': 'DomsLandings_TTL', 
             'R 11.3': 'DomsTakeOffs_R11',
-            'R 29.3': 'DomsTakeOffss_R29',
-            'TTL.3': 'DomsTakeOffss_TTL',
+            'R 29.3': 'DomsTakeOffs_R29',
+            'TTL.3': 'DomsTakeOffs_TTL',
             'A/C': 'TransitA/C',
             'HEL': 'TransitHEL',
             'TTL.4': 'TransitTTL',
