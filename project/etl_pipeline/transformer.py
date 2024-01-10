@@ -26,7 +26,6 @@ class TransformData:
             df.insert(0, 'Date', df.pop('Date'))
             #print(df)
             
-            #combined_dataframes = combined_dataframes.append(df, ignore_index=True)
             combined_dataframes = pd.concat([combined_dataframes,df],ignore_index=True)
             
             combined_dataframes = self.cleanATD(combined_dataframes)
