@@ -13,7 +13,7 @@ For this project we are using two open data sources: [European Data Portal](http
 
 The project follows a structured ETL (Extract, Transform, Load) pipeline approach, encompassing various directories and modules with specific functionalities. The "etl_main.py" serves as the entry point for running the pipeline using the command "python ./project/etl_main.py", resulting in the generation of the final dataset stored in an SQLite database named as "project.sqlite".
 
-![ETL Pipeline Diagram](.project/ETL Pipeline Diagram.png)
+![ETL Pipeline Diagram](https://github.com/abdulahad2307/made-template-Ahad/assets/39805378/c4b3dbcb-1f19-4c63-855f-adb75db44b0b)
 
 ### Project Setup:
 
