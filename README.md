@@ -25,7 +25,7 @@ The project follows a structured ETL (Extract, Transform, Load) pipeline approac
 4. Run the project by running the pipeline shell script ".project/pipeline.sh"
 5. To run the test will have to execute test shell script ".project/tests.sh"
 6. Finally, run and explore the report at "./project/report.ipynb"
-7. (Optional) Also can check the related [slides]() of the project and project [presentation video]
+7. (Optional) Also can check the related [slides](https://github.com/abdulahad2307/made-template-Ahad/blob/main/project/slides.pdf) of the project and project [presentation video](https://drive.google.com/file/d/1FI00c-42IsGgz9RY2EDzo-Wvqsbil-9w/view?usp=drive_link)
 
 
 # Exercises
