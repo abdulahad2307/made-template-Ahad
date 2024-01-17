@@ -19,12 +19,9 @@ The project follows a structured ETL (Extract, Transform, Load) pipeline approac
 
 1. Clone the [repository](https://github.com/abdulahad2307/made-template-Ahad/tree/main)
 2. Install [Python](https://www.python.org/downloads/), then create a [virtual environment](https://docs.python.org/3/library/venv.html) for the project.
-3. Installing Dependecies using requirements.txt 
-<div class="alert alert-block alert-info">
-<b>
-To install the dependencies for this project, run the following command to install the dependencies specified in the requirements.txt file: 
-pip install -r requirements.txt
-</div>
+3. Installing Dependecies using requirements.txt:
+	To install the dependencies for this project, run the following command to install the dependencies specified in the requirements.txt file: 
+		"pip install -r requirements.txt"
 4. Run the project by running the pipeline shell script ".project/pipeline.sh"
 5. To run the test will have to execute test shell script ".project/tests.sh"
 6. Finally, run and explore the report at "./project/report.ipynb"
