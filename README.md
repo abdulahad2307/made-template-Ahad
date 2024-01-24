@@ -4,6 +4,7 @@ This repository contains data engineering and data science projects and exercise
 
 ## Project Title: Impact of weather on daily air traffic at the Paphos International Airport, Cyprus.
 The Paphos International Airport plays a crucial role in connecting Cyprus to the global network of air travel. As a vital transportation hub, it is essential to understand how daily air traffic at this airport is influenced by weather conditions. This data science project focuses on analyzing the relationship between weather patterns and air traffic to provide valuable insights for airlines, passengers, and decision-makers. By examining these factors, we aim to help stakeholders better plan and manage their operations, ultimately benefiting Cyprus's economy and promoting efficient and safe air travel.
+![dominik-scythe-lUGWwDAWpEk-unsplash](https://github.com/abdulahad2307/made-template-Ahad/assets/39805378/e7e5032e-43e1-44c7-a27d-93d887a74a52)
 
 ### Data Source Deatils:
     
