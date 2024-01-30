@@ -1,16 +1,15 @@
-import zipfile
 import urllib.request
+import zipfile
 import pandas as pd
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Float
 
-zip = "https://gtfs.rhoenenergie-bus.de/GTFS.zip"
+zip_file = "https://gtfs.rhoenenergie-bus.de/GTFS.zip"
 zip_path = "GTFS.zip"
 required_filename = "stops.txt" ## Required File
 
-urllib.request.urlretrieve(zip, zip_path)
+urllib.request.urlretrieve(zip_file, zip_path)
 with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-    zip_ref.extract(required_filename
-)
+    zip_ref.extract(required_filename)
 
 columns = ["stop_id", "stop_name", "stop_lat", "stop_lon", "zone_id"] ## Filtering Required Columns
 
